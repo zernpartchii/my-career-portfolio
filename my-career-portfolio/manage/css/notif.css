@@ -1,0 +1,42 @@
+/* Initial style for notification */
+.notif {
+    width: 300px;
+    height: 60px;
+    position: fixed;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: -350px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    color: #0d0d0d;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    transition: top 0.5s ease-in-out;
+}
+
+/* Keyframe animation to slide from the top */
+@keyframes slideInFromtop {
+    0% {
+        top: -350px;
+        /* Start off-screen */
+    }
+
+    100% {
+        top: 10px;
+        /* End position */
+    }
+}
+
+/* Apply animation when the page is loaded */
+.notif.slide-in {
+    animation: slideInFromtop 0.5s ease-out forwards;
+}
+
+/* Apply hiding animation after progress bar is completed */
+.notif.hide {
+    display: none;
+}

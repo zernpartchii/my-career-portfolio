@@ -1,0 +1,132 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #68de68;
+    --secondary-color: #fff;
+    --dark: #161818;
+}
+
+body {
+    background-color: #0d0d0d;
+    max-height: 300vh;
+    background-image: url('');
+    background-repeat: repeat-y;
+    background-size: auto 100%;
+    background-position: top center;
+}
+
+nav {
+    background-color: var(--dark);
+    opacity: .8;
+}
+
+.resizable-img1 {
+    position: absolute;
+    max-width: 70%;
+}
+
+.navbar {
+    top: 20px;
+}
+
+.navbar-nav {
+    gap: 30px;
+}
+
+.nav-link {
+    font-weight: bold;
+    color: var(--primary-color);
+    width: 130px;
+}
+
+.profile {
+    border: var(--primary-color) solid 6px;
+    border-radius: 100%;
+}
+
+.btn {
+    background-color: var(--primary-color);
+}
+
+.btn:hover {
+    border: var(--primary-color) solid 1px;
+    color: var(--primary-color);
+}
+
+.btnSource,
+.btn-Resume {
+    border: var(--primary-color) solid 1px;
+    color: var(--primary-color);
+}
+
+.mybio,
+.contact-me,
+.explore-now,
+.timeline,
+.cert-description {
+    color: var(--primary-color);
+}
+
+.project {
+    max-width: 100%;
+}
+
+.timeline-item {
+    position: relative;
+    border-left: var(--secondary-color) solid 2px;
+}
+
+.timeline-dot {
+    position: absolute;
+    background-color: var(--secondary-color);
+    padding: 6px;
+    border-radius: 100%;
+    left: 0;
+    margin-left: -7px;
+}
+
+.timeline-arrow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-left: -9px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--secondary-color);
+    rotate: 180deg;
+}
+
+.certificate-container,
+.modal-card {
+    background-color: var(--dark);
+}
+
+.certificate-container,
+.cert-title {
+    width: 340px;
+}
+
+.popUp {
+    /* animation: moveLeft 1s ease-in-out infinite alternate; */
+    transition: transform 0.3s ease-in-out;
+}
+
+.popUp:hover {
+    transform: scale(1.1) rotateX(15deg);
+    /* animation: moveLeft 1s ease-in-out infinite alternate; */
+}
+
+@keyframes moveLeft {
+    from {
+        transform: translateX(5%);
+    }
+
+    to {
+        transform: translateX(-5%);
+    }
+}

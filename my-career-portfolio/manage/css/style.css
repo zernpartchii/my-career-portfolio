@@ -1,0 +1,126 @@
+  body {
+      background-color: #0d0d0d;
+      color: #fff;
+  }
+
+  ul {
+      list-style-type: none;
+  }
+
+  ul li {
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      transition: all 0.3s ease-in-out;
+  }
+
+  ul li:hover {
+      background-color: #161818;
+      color: #fff;
+      cursor: pointer;
+  }
+
+  #arrow {
+      display: none;
+  }
+
+  #edit-profile {
+      border: 1px solid #68de68;
+      color: #fff;
+  }
+
+  #edit-profile:hover {
+      background-color: #68de68;
+      color: #0d0d0d;
+  }
+
+  #mainContent {
+      width: 75%;
+  }
+
+  #mainContent>div {
+      transition: opacity 0.3s ease-in-out;
+      opacity: 0;
+  }
+
+  #mainContent>div:not(.d-none) {
+      opacity: 1;
+  }
+
+  img.profile {
+      border-radius: 100%;
+      border: 3px solid #68de68;
+  }
+
+  .cursor {
+      cursor: pointer;
+  }
+
+
+  @media screen and (max-width: 1200px) {
+
+      #mainContent {
+          width: 100%;
+      }
+
+      ul li {
+          display: inline;
+          margin-bottom: 30px;
+      }
+
+      #arrow {
+          display: none;
+      }
+
+      @media screen and (max-width: 768px) {
+          #arrow {
+              display: inline;
+              margin-right: 15px;
+          }
+
+          #manage {
+              display: flex;
+              position: fixed;
+              justify-content: center;
+              width: 100%;
+              top: 0;
+              left: 0;
+              background-color: #0d0d0d;
+              cursor: pointer;
+              z-index: 9999;
+          }
+
+          #sidebar {
+              width: 100%;
+          }
+
+          ul li {
+              display: flex;
+              justify-content: center;
+          }
+
+          ul {
+              display: none;
+          }
+
+          ul.show {
+              display: block;
+              position: fixed;
+              justify-content: center;
+              width: 100%;
+              background-color: #0d0d0d;
+              left: 0;
+              z-index: 9999;
+          }
+
+          .title {
+              display: flex;
+              justify-content: center;
+          }
+      }
+  }
+
+  .accordion-button {
+      background-color: #0d0d0d;
+      color: #fff;
+  }

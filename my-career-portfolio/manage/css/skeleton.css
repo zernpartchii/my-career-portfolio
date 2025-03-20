@@ -1,0 +1,180 @@
+@keyframes skeleton-loading {
+    0% {
+        background-color: #333;
+    }
+
+    50% {
+        background-color: #3d3d3d;
+    }
+
+    100% {
+        background-color: #333;
+    }
+}
+
+/* Skeleton for loading for Profile */
+.skeleton-profile {
+    background: #2C2C2C;
+    animation: skeleton-profile-loading 1.5s infinite linear;
+    border-radius: 5px;
+}
+
+.skeleton-profile-text {
+    height: 20px;
+    width: 60%;
+    margin: 10px auto;
+}
+
+.skeleton-profile-title {
+    height: 30px;
+    width: 40%;
+}
+
+.skeleton-profile-bio {
+    height: 18px;
+    width: 80%;
+}
+
+.skeleton-profile-description {
+    height: 15px;
+    width: 70%;
+}
+
+.skeleton-profile-image {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.skeleton-profile-button {
+    height: 50px;
+    width: 200px;
+}
+
+.skeleton-profile-heading {
+    height: 28px;
+    width: 50%;
+}
+
+.skeleton-profile-explore {
+    height: 18px;
+    width: 30%;
+}
+
+.skeleton-profile-about {
+    height: 16px;
+    width: 70%;
+}
+
+
+/* Skeleton loading for skill cards */
+.skeleton-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 8px;
+    background: #2C2C2C;
+    border-radius: 8px;
+}
+
+.skeleton-img {
+    width: 30px;
+    height: 30px;
+    background: #444;
+    border-radius: 50%;
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+}
+
+.skeleton-text {
+    width: 120px;
+    height: 10px;
+    background: #444;
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+}
+
+
+/* Skeleton loading for project cards */
+.skeletonProject-container {
+    position: relative;
+}
+
+.skeletonProject-card {
+    width: 100%;
+    background: #2C2C2C;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+}
+
+.skeletonProject-image {
+    width: 200px;
+    height: 100px;
+    background: #444;
+    border-radius: 5px;
+}
+
+.skeletonProject-text {
+    width: 100%;
+    height: 20px;
+    background: #444;
+    border-radius: 100px;
+}
+
+.skeletonProject-buttons {
+    display: flex;
+    gap: 10px;
+    width: 80%;
+    justify-content: end;
+}
+
+.skeletonProject-btn {
+    width: 40px;
+    height: 30px;
+    background: #444;
+    border-radius: 5px;
+}
+
+/* Skeleton loading for Certificates */
+.skeleton-certificate {
+    background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite linear;
+    border-radius: 5px;
+}
+
+.skeleton-certificate-text {
+    height: 20px;
+    width: 60%;
+    margin: 10px 0;
+}
+
+.skeleton-certificate-title {
+    height: 25px;
+    width: 40%;
+}
+
+.skeleton-certificate-description {
+    height: 18px;
+    width: 50%;
+}
+
+.skeleton-certificate-year {
+    height: 18px;
+    width: 20%;
+}
+
+.skeleton-certificate-image {
+    height: 200px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.skeleton-certificate-link {
+    height: 20px;
+    width: 50%;
+}

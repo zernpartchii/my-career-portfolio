@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../img/logo.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link text-white href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link text-white rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/notif.css">
+    <link rel="stylesheet" href="../css/skeleton.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script defer src="../js/sweetAlert.js"></script>
+    <script defer src="../js/elements.js"></script>
+    <script defer src="../js/notif.js"></script>
+    <script defer src="../js/globalFunction.js"></script>
+    <script defer src="../js/logout.js"></script>
+    <script defer type="module" src="../js/deleteAccount.js"></script>
+    <script defer type="module" src="../js/sidebar.js"></script>
+    <script defer type="module" src="../js/firebase.js"></script>
+    <script defer type="module" src="../js/profile.js"></script>
+    <script defer type="module" src="../js/skills.js"></script>
+    <script defer type="module" src="../js/project.js"></script>
+    <script defer type="module" src="../js/timeline.js"></script>
+    <script defer type="module" src="../js/certificates.js"></script>
+    <script defer type="module" src="../js/contact.js"></script>
+    <title>Manage Portfolio</title>
+</head>
+
+<body>
+    <div class="container d-flex flex-wrap mt-5 justify-content-between">
+        <div id="sidebar" class="flex-fill col-3">
+            <h4 class="py-3 text-start ps-3" id="manage">
+                <i id="arrow" class="bi bi-chevron-double-down"></i>
+                MANAGE
+            </h4>
+            <ul class="p-0">
+                <li data-target="profile">Profile</a></li>
+                <li data-target="skills">Skills</a></li>
+                <li data-target="projects">Projects</a></li>
+                <li data-target="timeline">Timeline</a></li>
+                <li data-target="certifications">Certifications</a></li>
+            </ul>
+        </div>
+        <div id="mainContent" class="flex-fill col-9">
+            <!-- Profile Section -->
+            <div class="mb-3 p-3 d-none" id="profile">
+                <div class="d-flex justify-content-between flex-wrap align-items-center gap-3 mb-5">
+                    <h2 class="title m-0">Profile</h2>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a id="btnViewPorfolio" class="btn btn-primary" target="_blank">View Portfolio</a>
+                        <button id="btnLogout" class="btn btn-danger">Logout</button>
+                        <button id="btnDeleteAccount" class="btn btn-outline-danger text-white">Delete
+                            Account</button>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap justify-content-center align-items-end gap-5">
+                    <div class="flex-column">
+                        <div id="profileSkeleton"></div>
+                        <img id="image-profile" width="200" class="profile img-fluid mb-3"> <br>
+                        <p class="m-0 mb-1">Note: Fb Profile Image Address</p>
+                        <input type="search" id="profile-imageAdress" disabled
+                            class="form-control form-control-sm mb-3 w-100" placeholder="Copy image address">
+                        <button class="btn btn-outline-success w-100 bi-pencil-square" id="edit-profile">
+                            Edit Profile</button>
+                        <input type="checkbox" class="btn-check" id="btnResume" autocomplete="off">
+                        <label class="btn btn-outline-secondary w-100 mt-3" for="btnResume">Resume</label><br>
+                    </div>
+                    <div class="flex-column flex-fill">
+                        <div class="d-flex flex-wrap mb-3 gap-3">
+                            <div class="flex-fill">
+                                <div class="input-group">
+                                    <input type="search" id="profile-username" class="form-control form-control-lg"
+                                        placeholder="Username" aria-label="Username" aria-describedby="btnSaveUsername">
+                                    <button class="btn btn-secondary" type="button" id="btnSaveUsername">Save</button>
+                                </div>
+                            </div>
+                            <div class="flex-fill">
+                                <div class="input-group">
+                                    <input type="password" id="profilePassword" disabled
+                                        class="form-control form-control-lg" placeholder="Password">
+                                    <button class="btn btn-secondary" type="button"
+                                        id="btnShowHidePassword">Show</button>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="search" id="profile-resumeLink" disabled class="form-control form-control-lg mb-3"
+                            placeholder="Resume Link">
+                        <input type="search" id="profile-name" disabled class="form-control form-control-lg mb-3"
+                            placeholder="Name">
+                        <input type="search" id="profile-bio" disabled class="form-control form-control-lg mb-3"
+                            placeholder="Bio">
+                        <textarea class="form-control" disabled id="profile-description" cols="50" rows="5"
+                            placeholder="Description"></textarea>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="d-flex flex-column">
+                        <div class="mb-3">
+                            <h4 class="d-flex justify-content-between">About Me <span class="ms-auto fs-6">(Note: Add
+                                    "&lt;br&gt;" for a new
+                                    line)</span></h4>
+                            <textarea class="form-control" disabled id="aboutMe" cols="50" rows="8"
+                                placeholder="Type here..."></textarea>
+                        </div>
+
+                        <div class="my-3">
+                            <div class="d-flex align-items-center flex-wrap gap-3 mb-3">
+                                <h4>Contact </h4>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#contact">
+                                    Create Contact Info
+                                </button>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="contact" data-bs-backdrop="static" data-bs-keyboard="false"
+                                tabindex="-1" aria-labelledby="contactLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content bg-dark">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="contactLabel">Add Contact</h1>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="hidden" id="contactID">
+                                            <div class="mb-3">
+                                                <label class="mb-2" for="contactName">Contact Name</label>
+                                                <input type="text" id="contactName" class="form-control"
+                                                    placeholder="Enter Contact Name">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="mb-2" for="contactImage">Image Address (Open image in new
+                                                    tab)</label>
+                                                <input type="text" id="contactImage" class="form-control"
+                                                    placeholder="Enter Image Address">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="mb-2" for="contactLink">Link (Note: add "mailto:" if it is
+                                                    an email)</label>
+                                                <input type="text" id="contactLink" class="form-control"
+                                                    placeholder="Enter Link">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button id="btnDeleteContact"
+                                                class="btn btn-danger me-auto d-none bi bi-trash"> Delete</button>
+                                            <button id="btnCloseContact" type="button" class="btn btn-danger"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button id="btnAddContact" type="button" class="btn btn-primary">Add
+                                                Contact</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-wrap gap-3" id="contactContainer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Skills Section -->
+            <div class="mb-3 p-3 d-none" id="skills">
+                <h2 class="title mb-4">Skills</h2>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                    <input type="hidden" class="border" id="techID">
+                    <div class="flex-fill">
+                        <label class="mb-2" for="skillType">Skill Type</label>
+                        <select class="form-select" aria-label="Default select example" id="skillType">
+                            <option hidden selected>Select Type</option>
+                            <option value="TechStack & Design">TechStack & Design</option>
+                            <option value="Tools">Tools</option>
+                            <option value="Soft Skills">Soft Skills</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    <div class="flex-fill">
+                        <label class="mb-2" for="techName">Name</label>
+                        <input type="search" required id="techName" class="form-control" placeholder="Enter Name...">
+                    </div>
+                    <div class="flex-fill">
+                        <label class="mb-2" for="textImage">Image Address (Open image in new
+                            tab)</label>
+                        <input type="search" required id="textImage" class="form-control"
+                            placeholder="Enter Image Address...">
+                    </div>
+                    <div class="d-flex align-items-end gap-2">
+                        <button class="btn btn-primary bi-plus-lg" id="btnAddNewTech"></button>
+                        <div id="techAction" class="d-none d-flex gap-2">
+                            <button id="btnEditTeck" class="btn btn-success bi-check"></button>
+                            <button id="btnDeleteTech" class="btn btn-danger bi-trash"></button>
+                        </div>
+                        <button class="btn btn-secondary bi-x-lg" id="btnResetTech"></button>
+                    </div>
+                </div>
+                <div id="switchContainer" class="d-flex flex-wrap gap-3 mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switchTech">
+                        <label class="form-check-label" for="switchTech">TechStack & Design</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switchTools">
+                        <label class="form-check-label" for="switchTools">Tools</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switchSoft">
+                        <label class="form-check-label" for="switchSoft">Soft Skills</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switchOthers">
+                        <label class="form-check-label" for="switchOthers">Others</label>
+                    </div>
+                </div>
+                <div class="accordion accordion-flush" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button id="btnTech" class="accordion-button bg-dark text-white" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                                aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                TechStack & Design: <span class="badge bg-danger ms-2">0</span>
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                            <div class="accordion-body bg-dark">
+                                <div class="d-flex flex-wrap gap-2" id="techContainer">
+                                    <div class="skeleton-card">
+                                        <div class="skeleton-img"></div>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                    <div class="skeleton-card">
+                                        <div class="skeleton-img"></div>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                    <div class="skeleton-card">
+                                        <div class="skeleton-img"></div>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button id="btnTools" class="accordion-button bg-dark text-white collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo"
+                                aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                Tools: <span class="badge bg-danger ms-2">0</span>
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                            <div class="accordion-body bg-dark">
+                                <div class="d-flex flex-wrap gap-2" id="toolContainer">
+                                    <div class="skeleton-card">
+                                        <div class="skeleton-img"></div>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                    <div class="skeleton-card">
+                                        <div class="skeleton-img"></div>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                    <div class="skeleton-card">
+                                        <div class="skeleton-img"></div>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button id="btnSoft" class="accordion-button bg-dark text-white collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree"
+                                aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                Soft Skills: <span class="badge bg-danger ms-2">0</span>
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                            <div class="accordion-body bg-dark">
+                                <div class="d-flex flex-wrap gap-2" id="softContainer">
+                                    <div class="skeleton-card">
+                                        <div class="skeleton-img"></div>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                    <div class="skeleton-card">
+                                        <div class="skeleton-img"></div>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                    <div class="skeleton-card">
+                                        <div class="skeleton-img"></div>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button id="btnOtherSkills" class="accordion-button bg-dark text-white collapsed"
+                                type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour"
+                                aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                                Other: <span class="badge bg-danger ms-2">0</span>
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
+                            <div class="accordion-body bg-dark">
+                                <div class="d-flex flex-wrap gap-2" id="otherSkillsContainer">
+                                    <div class="skeleton-card">
+                                        <div class="skeleton-img"></div>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                    <div class="skeleton-card">
+                                        <div class="skeleton-img"></div>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                    <div class="skeleton-card">
+                                        <div class="skeleton-img"></div>
+                                        <div class="skeleton-text"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Projects Section -->
+            <div class="mb-3 p-3 d-none" id="projects">
+                <h2 class="title mb-4">Projects</h2>
+
+                <div class="d-flex flex-column">
+
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-primary" id="btnAddNewProject">Add New Project</button>
+                        <input type="checkbox" class="btn-check" id="disabledVisitButton" autocomplete="off">
+                        <label class="btn btn-outline-secondary disabledVisitButton" for="disabledVisitButton">
+                            Enabled all Visit Buttons
+                        </label>
+                        <input type="checkbox" class="btn-check" id="disabledSourceCodeButton" autocomplete="off">
+                        <label class="btn btn-outline-secondary disabledSourceCodeButton"
+                            for="disabledSourceCodeButton">Enabled all Source Code Buttons</label>
+                    </div>
+
+                    <div class="d-flex flex-column gap-2 mt-3 d-none" id="addProjectContainer">
+                        <div class="d-flex flex-wrap gap-2">
+                            <input type="hidden" id="projectID" class="form-control" placeholder="Project ID">
+                            <div class="flex-fill">
+                                <label class="mb-2" for="projectType">Project Type</label>
+                                <select class="form-select" id="projectType">
+                                    <option hidden selected>Select Project Type</option>
+                                    <option value="Web">Web</option>
+                                    <option value="Mobile">Mobile</option>
+                                    <option value="Desktop">Desktop</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                            </div>
+                            <div class="flex-fill">
+                                <label class="mb-2" for="projectImageAddress">Image Address (Open image in new
+                                    tab)</label>
+                                <input type="text" id="projectImageAddress" class="form-control"
+                                    placeholder="Enter Image Address...">
+                            </div>
+                            <div class="flex-fill">
+                                <label class="mb-2" for="projectName">Project Name</label>
+                                <input type="text" id="projectName" class="form-control"
+                                    placeholder="Enter Project Name...">
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <div class="flex-fill">
+                                <label class="mb-2" for="projectSourceCode">Source Code Link (Github, G-Drive
+                                    etc...)</label>
+                                <input type="text" id="projectSourceCode" class="form-control"
+                                    placeholder="Enter Source Code Link...">
+                            </div>
+                            <div class="flex-fill">
+                                <label class="mb-2" for="projectLink">Project Link or Domain Address</label>
+                                <input type="text" id="projectLink" class="form-control"
+                                    placeholder="Enter Project Link or Domain Address...">
+                            </div>
+                        </div>
+                        <div class="flex-fill">
+                            <label class="mb-2" for="projectDescription">Description <span class="fs-6">(Note: Add
+                                    "&lt;br&gt;" for a new
+                                    line)</span></label>
+                            <textarea rows="8" class="form-control" id="projectDescription"
+                                placeholder="Enter Description here..."></textarea>
+                        </div>
+                        <div class="my-3">
+                            <label for="#">TechStack & Design</label>
+                            <div class="d-flex flex-wrap gap-2 mt-2" id="listOfTech">
+                                <div class="skeleton-card">
+                                    <div class="skeleton-img"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                                <div class="skeleton-card">
+                                    <div class="skeleton-img"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                                <div class="skeleton-card">
+                                    <div class="skeleton-img"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="#">Tools</label>
+                            <div class="d-flex flex-wrap gap-2 mt-2" id="listOfTools">
+                                <div class="skeleton-card">
+                                    <div class="skeleton-img"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                                <div class="skeleton-card">
+                                    <div class="skeleton-img"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                                <div class="skeleton-card">
+                                    <div class="skeleton-img"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="#">Soft Skills</label>
+                            <div class="d-flex flex-wrap gap-2 mt-2" id="listOfSoftSkills">
+                                <div class="skeleton-card">
+                                    <div class="skeleton-img"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                                <div class="skeleton-card">
+                                    <div class="skeleton-img"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                                <div class="skeleton-card">
+                                    <div class="skeleton-img"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="#">Others</label>
+                            <div class="d-flex flex-wrap gap-2 mt-2" id="listOfOtherSkills">
+                                <div class="skeleton-card">
+                                    <div class="skeleton-img"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                                <div class="skeleton-card">
+                                    <div class="skeleton-img"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                                <div class="skeleton-card">
+                                    <div class="skeleton-img"></div>
+                                    <div class="skeleton-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column gap-2 mb-3">
+                            MANAGE BUTTON
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="border rounded-3 p-2">Visit Button</span>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="btnVisitDisable">
+                                    <label class="form-check-label" for="btnVisitDisable">Disabled</label>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="border rounded-3 p-2">Source Code Button</span>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="btnSourceDisable">
+                                    <label class="form-check-label" for="btnSourceDisable">Disabled</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex gap-2">
+                            <button id="btnAddProject" class="btn btn-primary">Add Project</button>
+                            <button id="btnCloseProject" class="btn btn-danger">Close</button>
+                            <button id="btnResetProject" class="btn btn-secondary d-none">Reset</button>
+                        </div>
+                    </div>
+
+                    <h5 class="mt-4 mb-3">Project List</h5>
+                    <div class="nav flex-row nav-pills me-3 gap-3 mb-3 border-bottom pb-3" id="v-pills-tab"
+                        role="tablist" aria-orientation="vertical">
+
+                        <button class="btn text-white active" id="v-pills-all-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-all" type="button" role="tab" aria-controls="v-pills-all"
+                            aria-selected="true">All <span id="totalAll" class="badge bg-danger">0</span></button>
+
+                        <button class="btn text-white" id="v-pills-web-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-web" type="button" role="tab" aria-controls="v-pills-web"
+                            aria-selected="false">Web <span id="totalWeb" class="badge bg-danger">0</span></button>
+
+                        <button class="btn text-white" id="v-pills-mobile-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-mobile" type="button" role="tab" aria-controls="v-pills-mobile"
+                            aria-selected="false">Mobile <span id="totalMobile"
+                                class="badge bg-danger">0</span></button>
+
+                        <button class="btn text-white" id="v-pills-desktop-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-desktop" type="button" role="tab" aria-controls="v-pills-desktop"
+                            aria-selected="false">Desktop <span id="totalDesktop"
+                                class="badge bg-danger">0</span></button>
+
+                        <button class="btn text-white" id="v-pills-others-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-others" type="button" role="tab" aria-controls="v-pills-others"
+                            aria-selected="false">Others <span id="totalOthers"
+                                class="badge bg-danger">0</span></button>
+                    </div>
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-all" role="tabpanel"
+                            aria-labelledby="v-pills-all-tab" tabindex="0">
+                            <div class="d-flex flex-wrap gap-2 " id="allContainer">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-web" role="tabpanel" aria-labelledby="v-pills-web-tab"
+                            tabindex="0">
+                            <div class="d-flex flex-wrap gap-2 " id="webContainer">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-mobile" role="tabpanel"
+                            aria-labelledby="v-pills-mobile-tab" tabindex="0">
+                            <div class="d-flex flex-wrap gap-2 " id="mobileContainer">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-desktop" role="tabpanel"
+                            aria-labelledby="v-pills-desktop-tab" tabindex="0">
+                            <div class="d-flex flex-wrap gap-2 " id="desktopContainer">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-others" role="tabpanel"
+                            aria-labelledby="v-pills-others-tab" tabindex="0">
+                            <div class="d-flex flex-wrap gap-2 " id="othersContainer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Timeline Section -->
+            <div class="mb-3 p-3 d-none" id="timeline">
+                <h2 class="title mb-4">Timeline</h2>
+
+                <!-- Button trigger modal -->
+                <button id="btnAddNewTimeline" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    Add New Timeline
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered ">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Timeline</h1>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <input type="hidden" class="form-control" id="timelineID">
+                                    <div class="d-flex flex-wrap gap-2 mb-3">
+                                        <div class="flex-fill">
+                                            <label class="mb-2" for="timlineOrder">Timeline Order</label>
+                                            <input type="search" class="form-control" id="timlineOrder"
+                                                placeholder="Enter Timeline Order...">
+                                        </div>
+                                        <div class="flex-fill">
+                                            <label class="mb-2" for="timlineYear">Year</label>
+                                            <input type="search" class="form-control" id="timlineYear"
+                                                placeholder="Enter Year...">
+                                        </div>
+                                    </div>
+                                    <div class="flex-fill mb-3">
+                                        <label class="mb-2" for="timlineTitle">Title</label>
+                                        <input type="search" class="form-control" id="timlineTitle"
+                                            placeholder="Enter Title...">
+                                    </div>
+                                    <div class="flex-fill mb-3">
+                                        <label class="mb-2" for="timlineStatus">Status</label>
+                                        <input type="search" class="form-control" id="timlineStatus"
+                                            placeholder="Enter Status...">
+                                    </div>
+                                </div>
+                                <div class="flex-fill mb-3">
+                                    <label class="mb-2" for="timlineDescription">Description <span
+                                            class="ms-auto fs-6">(Note: Add
+                                            "&lt;br&gt;" for a new
+                                            line)</span></label>
+                                    <textarea class="form-control" rows="6" id="timlineDescription"
+                                        placeholder="Enter Description..."></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="btnCloseTimelineModal" type="button" class="btn btn-danger"
+                                    data-bs-dismiss="modal" aria-label="Close">Close</button>
+                                <button class="btn btn-secondary d-none" id="btnResetTimline">Reset</button>
+                                <button class="btn btn-primary" id="btnAddTimline">Add Timeline</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion accordion-flush mt-3" id="timelineContainer">
+
+                </div>
+            </div>
+            <!-- Certifications Section -->
+            <div class="mb-3 p-3 d-none" id="certifications">
+                <h2 class="title mb-4">Certifications</h2>
+
+                <!-- Button trigger modal -->
+                <button id="btnAddNewCertificate" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#certificateModal">
+                    Add New
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="certificateModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="certificateModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="certificateModalLabel">Add Certificate</h1>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" id="certificateID">
+                                <div class="mb-3">
+                                    <label class="mb-2" for="certificateName">Certificate Name</label>
+                                    <input type="search" id="certificateName" class="form-control"
+                                        placeholder="Enter certificate name...">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="mb-2" for="certificateImageAddress">Image Address (Open image in new
+                                        tab)</label>
+                                    <input type="search" id="certificateImageAddress" class="form-control"
+                                        placeholder="Enter Image Address...">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="mb-2" for="certificateImageLink">Image Link (Canva -
+                                        Upload your Certificate there)</label>
+                                    <input type="search" id="certificateImageLink" class="form-control"
+                                        placeholder="Enter Image Link...">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="mb-2" for="certificateLocation">Location</label>
+                                    <input type="search" id="certificateLocation" class="form-control"
+                                        placeholder="Enter location...">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="mb-2" for="certificateDate">Date</label>
+                                    <input type="date" id="certificateDate" class="form-control"
+                                        placeholder="Enter certificate year...">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="btnCloseCertificate" type="button" class="btn btn-danger"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button id="btnAddCertificate" type="button" class="btn btn-primary">Add
+                                    Certificate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="mt-4">Certificate List</h5>
+                <div class="d-flex flex-wrap gap-2" id="certificateContainer">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Notification with progress bar -->
+    <div class="card notif p-3"></div>
+</body>
+
+</html>

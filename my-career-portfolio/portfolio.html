@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/logo.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link text-white href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link text-white rel="stylesheet" href="./style.css">
+    <link text-white rel="stylesheet" href="./manage/css/skeleton.css">
+    <script defer src="./index.js" type="module"></script>
+    <title>Portfolio</title>
+</head>
+
+<body>
+    <!-- Background Images -->
+    <img src="" alt="" class="resizable-img1" width="600">
+
+    <div class="container text-white">
+
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark w-100 sticky-top rounded-4">
+            <div class="container-fluid">
+                <a class="navbar-brand popUp" href="#">
+                    <img src="./img/logo.png" alt="" width="35">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation"><span class="navbar-toggler-icon "></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarNavDropdown">
+                    <div class=" w-100 d-flex justify-content-center">
+                        <ul class="navbar-nav text-center  ">
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold popUp" aria-current="page" href="#about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold popUp" href="#skills">Skills</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold popUp" href="#projects">Projects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold popUp" href="#timeline">Timeline</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold popUp" href="#certifications">Certifications</a>
+                            </li>
+                        </ul>
+                        <script>
+                            document.querySelectorAll(".nav-link").forEach(item => {
+                                item.addEventListener("click", () => {
+                                    const navbarCollapse = document.querySelector(".navbar-collapse");
+                                    if (navbarCollapse.classList.contains("show")) {
+                                        new bootstrap.Collapse(navbarCollapse, { toggle: true });
+                                    }
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="d-flex align-items-center flex-wrap">
+            <!-- Profile Section -->
+            <div class="col-sm-6 col-lg-6 flex-fill text-center my-5 p-3">
+                <h1 id="userID"></h1>
+                <div id="profile" class="d-flex justify-content-center popUp">
+                    <div class="skeleton-profile skeleton-profile-image mb-3"></div>
+                </div>
+                <h1 id="myName">
+                    <div class="skeleton-profile skeleton-profile-text skeleton-profile-title"></div>
+                </h1>
+                <div id="myBio" class="fs-4 mybio">
+                    <div class="skeleton-profile skeleton-profile-text skeleton-profile-bio"></div>
+                </div>
+                <div id="myDescription" class="my-4">
+                    <div class="skeleton-profile skeleton-profile-text skeleton-profile-description my-4"></div>
+                </div>
+                <div class="d-flex gap-3 justify-content-center">
+                    <button class="btn btn-ContactMe rounded-5 p-3 fw-bold popUp w-100" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal" style="max-width: 15em;">Contact Me</button>
+                    <a href="#" id="btnResume" target="_blank"
+                        class="btn-Resume text-decoration-none rounded-5 p-3 fw-bold popUp d-none">Resume</a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-6 flex-fill d-flex flex-column gap-2">
+                <!-- About Me Section -->
+                <div class="text-start my-5 p-3" id="about">
+                    <h2>ABOUT ME</h2>
+                    <P class="explore-now">E X P L O R E <span class="mx-1"></span> N O W</P>
+
+                    <div id="myAbout">
+                        <div class="text-start mb-5 p-3">
+                            <div class="skeleton-profile skeleton-profile-text skeleton-profile-heading"></div>
+                            <div class="skeleton-profile skeleton-profile-text skeleton-profile-explore"></div>
+                            <div class="skeleton-profile skeleton-profile-text skeleton-profile-about"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Skills Section -->
+        <div class="text-center mb-5 p-3" id="skills">
+            <h2>SKILLS</h2>
+
+            <div id="myTechStack">
+                <P class="explore-now">T e c h S t a c k <span class="mx-2">&</span> D e s i g n</P>
+                <div class="d-flex justify-content-center flex-wrap gap-3 mb-5" id="techContainer">
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="myTools">
+                <P class="explore-now">T o o l s</P>
+                <div class="d-flex justify-content-center flex-wrap gap-3 mb-5" id="toolContainer">
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mySoftSkill">
+                <P class="explore-now">S o f t <span class="mx-1"></span> S k i l l s</P>
+                <div class="d-flex justify-content-center flex-wrap gap-3 mb-5" id="softContainer">
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="myOthers">
+                <P class="explore-now">O t h e r s<span class="mx-1"></span> S k i l l s</P>
+                <div class="d-flex justify-content-center flex-wrap gap-3 mb-5" id="othersContainer">
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Section -->
+        <div class="text-center my-5 p-3" id="projects">
+            <h2>PROJECTS</h2>
+            <P class="explore-now">E X P L O R E <span class="mx-1"></span> N O W</P>
+
+            <div id="projectContainer">
+                <div class="gap-3 my-5 skeleton-project-container">
+                    <div class="skeleton-project skeleton-project-image"></div>
+                    <div class="skeleton-project skeleton-project-button"></div>
+
+                    <div class="flex-column w-100 px-3 mt-4">
+                        <div class="d-flex flex-row">
+                            <div class="skeleton-project skeleton-project-title"></div>
+                            <div class="skeleton-project skeleton-project-icon ms-auto"></div>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-3 mb-3">
+                            <div class="skeleton-project skeleton-project-card"></div>
+                            <div class="skeleton-project skeleton-project-card"></div>
+                            <div class="skeleton-project skeleton-project-card"></div>
+                        </div>
+
+                        <div class="skeleton-project skeleton-project-text"></div>
+                        <div class="skeleton-project skeleton-project-text"></div>
+                    </div>
+                </div>
+
+                <style>
+                    /* Skeleton-project Effect */
+                    .skeleton-project {
+                        background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+                        background-size: 200% 100%;
+                        animation: skeleton-project-loading 1.5s infinite linear;
+                        border-radius: 4px;
+                    }
+
+                    @keyframes skeleton-project-loading {
+                        0% {
+                            background-position: -200% 0;
+                        }
+
+                        100% {
+                            background-position: 200% 0;
+                        }
+                    }
+
+                    /* Skeleton-project Components */
+                    .skeleton-project-container {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 16px;
+                    }
+
+                    .skeleton-project-image {
+                        width: 700px;
+                        height: 400px;
+                        border-radius: 8px;
+                    }
+
+                    .skeleton-project-button {
+                        width: 120px;
+                        height: 50px;
+                        border-radius: 25px;
+                    }
+
+                    .skeleton-project-title {
+                        width: 200px;
+                        height: 32px;
+                    }
+
+                    .skeleton-project-icon {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                    }
+
+                    .skeleton-project-card {
+                        width: 100px;
+                        height: 40px;
+                        border-radius: 8px;
+                    }
+
+                    .skeleton-project-text {
+                        width: 100%;
+                        height: 16px;
+                        margin-bottom: 8px;
+                    }
+                </style>
+            </div>
+        </div>
+
+        <!-- Timeline Section -->
+        <div class="text-center my-5 p-3" id="timeline">
+            <h2>TIMELINE</h2>
+            <P class="explore-now mb-5">E X P L O R E <span class="mx-1"></span> N O W</P>
+
+            <div id="timelineContainer" class="timeline-item ps-4 pb-4">
+                <div class="mb-5">
+                    <div class="d-flex align-items-center flex-row gap-3 mb-2">
+                        <span class="timeline-dot skeleton"></span>
+                        <span class="badge bg-body text-dark rounded-4 px-3 py-2 fw-bold skeleton-text"></span>
+                        <h4 class="m-0 skeleton-text"></h4>
+                        <p class="m-0 skeleton-text"></p>
+                    </div>
+                    <p class="text-start skeleton-text skeleton-paragraph"></p>
+                </div>
+                <div class="mb-5">
+                    <div class="d-flex align-items-center flex-row gap-3 mb-2">
+                        <span class="timeline-dot skeleton"></span>
+                        <span class="badge bg-body text-dark rounded-4 px-3 py-2 fw-bold skeleton-text"></span>
+                        <h4 class="m-0 skeleton-text"></h4>
+                        <p class="m-0 skeleton-text"></p>
+                    </div>
+                    <p class="text-start skeleton-text skeleton-paragraph"></p>
+                </div>
+
+                <style>
+                    /* Skeleton Effect */
+                    .skeleton {
+                        background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+                        background-size: 200% 100%;
+                        animation: skeleton-loading 1.5s infinite linear;
+                        border-radius: 4px;
+                    }
+
+                    @keyframes skeleton-loading {
+                        0% {
+                            background-position: -200% 0;
+                        }
+
+                        100% {
+                            background-position: 200% 0;
+                        }
+                    }
+
+                    .skeleton-text {
+                        width: 120px;
+                        height: 20px;
+                    }
+
+                    .skeleton-paragraph {
+                        width: 100%;
+                        height: 40px;
+                    }
+
+                    .timeline-dot {
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                    }
+                </style>
+            </div>
+        </div>
+
+        <!-- Certificates Section -->
+        <div class="text-center my-5 p-3" id="certifications">
+            <h2>CERTIFICATIONS</h2>
+            <P class="explore-now mb-5">E X P L O R E <span class="mx-1"></span> N O W</P>
+
+            <div id="certificateContainer" class="d-flex justify-content-center flex-wrap gap-3">
+                <div class="card bg-dark certificate-container p-0">
+                    <div class="card-body text-white">
+                        <div class="skeleton-certificate skeleton-certificate-image"></div>
+                        <div class="text-start my-3">
+                            <div class="skeleton-certificate skeleton-certificate-text skeleton-certificate-title">
+                            </div>
+                            <div class="cert-description">
+                                <div
+                                    class="skeleton-certificate skeleton-certificate-text skeleton-certificate-description">
+                                </div>
+                                <div class="skeleton-certificate skeleton-certificate-text skeleton-certificate-year">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skeleton-certificate skeleton-certificate-text skeleton-certificate-link"></div>
+                    </div>
+                </div>
+                <div class="card bg-dark certificate-container p-0">
+                    <div class="card-body text-white">
+                        <div class="skeleton-certificate skeleton-certificate-image"></div>
+                        <div class="text-start my-3">
+                            <div class="skeleton-certificate skeleton-certificate-text skeleton-certificate-title">
+                            </div>
+                            <div class="cert-description">
+                                <div
+                                    class="skeleton-certificate skeleton-certificate-text skeleton-certificate-description">
+                                </div>
+                                <div class="skeleton-certificate skeleton-certificate-text skeleton-certificate-year">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skeleton-certificate skeleton-certificate-text skeleton-certificate-link"></div>
+                    </div>
+                </div>
+                <div class="card bg-dark certificate-container p-0">
+                    <div class="card-body text-white">
+                        <div class="skeleton-certificate skeleton-certificate-image"></div>
+                        <div class="text-start my-3">
+                            <div class="skeleton-certificate skeleton-certificate-text skeleton-certificate-title">
+                            </div>
+                            <div class="cert-description">
+                                <div
+                                    class="skeleton-certificate skeleton-certificate-text skeleton-certificate-description">
+                                </div>
+                                <div class="skeleton-certificate skeleton-certificate-text skeleton-certificate-year">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skeleton-certificate skeleton-certificate-text skeleton-certificate-link"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="text-center my-5 p-3">
+            <h3 class="mb-5 ms-3">Contact Me</h3>
+            <div id="contactContainer" class="d-flex justify-content-center flex-wrap flex-row gap-5 mb-4">
+                <div class="text-center p-3">
+                    <div class="skeleton-contact skeleton-contact-image"></div>
+                    <div class="skeleton-contact skeleton-contact-text skeleton-contact-name mt-2"></div>
+                </div>
+                <div class="text-center p-3">
+                    <div class="skeleton-contact skeleton-contact-image"></div>
+                    <div class="skeleton-contact skeleton-contact-text skeleton-contact-name mt-2"></div>
+                </div>
+                <div class="text-center p-3">
+                    <div class="skeleton-contact skeleton-contact-image"></div>
+                    <div class="skeleton-contact skeleton-contact-text skeleton-contact-name mt-2"></div>
+                </div>
+                <style>
+                    .skeleton-contact {
+                        background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+                        background-size: 200% 100%;
+                        animation: skeleton-contact-loading 1.5s infinite linear;
+                        border-radius: 5px;
+                    }
+
+                    .skeleton-contact-image {
+                        height: 100px;
+                        width: 100px;
+                        border-radius: 50%;
+                        display: inline-block;
+                    }
+
+                    .skeleton-contact-text {
+                        height: 20px;
+                        width: 60%;
+                        margin: 10px auto;
+                    }
+
+                    @keyframes skeleton-contact-loading {
+                        0% {
+                            background-position: -200% 0;
+                        }
+
+                        100% {
+                            background-position: 200% 0;
+                        }
+                    }
+                </style>
+            </div>
+            <p>Created with ❤️ using HTML, CSS + Bootstrap and Javascript</p>
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content modal-card">
+                <div class="modal-header text-center">
+                    <h1 class="modal-title fs-5 text-white mx-auto" id="exampleModalLabel">Contact Me</h1>
+                </div>
+                <div class="modal-body">
+                    <div id="contactContainerModal" class="d-flex justify-content-center flex-row gap-5 my-3">
+                        <div class="text-center p-3">
+                            <div class="skeleton-contact skeleton-contact-image"></div>
+                            <div class="skeleton-contact skeleton-contact-text skeleton-contact-name mt-2"></div>
+                        </div>
+                        <div class="text-center p-3">
+                            <div class="skeleton-contact skeleton-contact-image"></div>
+                            <div class="skeleton-contact skeleton-contact-text skeleton-contact-name mt-2"></div>
+                        </div>
+                        <div class="text-center p-3">
+                            <div class="skeleton-contact skeleton-contact-image"></div>
+                            <div class="skeleton-contact skeleton-contact-text skeleton-contact-name mt-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
