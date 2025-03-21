@@ -34,11 +34,10 @@
 </head>
 
 <body>
-    <div class="container d-flex flex-wrap mt-5 justify-content-between">
+    <div class="container d-flex flex-wrap my-5 justify-content-between" style="margin-bottom: 100px;">
         <div id="sidebar" class="flex-fill col-3">
             <h4 class="py-3 text-start ps-3" id="manage">
-                <i id="arrow" class="bi bi-chevron-double-down"></i>
-                MANAGE
+                MANAGE PORTFOLIO
             </h4>
             <ul class="p-0">
                 <li data-target="profile">Profile</a></li>
@@ -48,6 +47,65 @@
                 <li data-target="certifications">Certifications</a></li>
             </ul>
         </div>
+
+        <h4 class="manage text-center flex-fill">
+            MANAGE PORTFOLIO
+        </h4>
+
+        <div class="bottom-bar fixed-bottom bg-dark d-flex align-items-center py-2">
+            <ul class="d-flex justify-content-around flex-fill list-unstyled m-0">
+                <li class="p-3 m-0">
+                    <a class="fw-bold popUp d-flex align-items-center" data-target="profile">
+                        <img class="img-fluid" width="30"
+                            src="https://cdn3.iconfinder.com/data/icons/leto-user-group/64/__user_person_profile-64.png">
+                    </a>
+                </li>
+                <li class="p-3 m-0">
+                    <a class="fw-bold popUp d-flex align-items-center" data-target="skills">
+                        <img class="img-fluid" width="30"
+                            src="https://cdn4.iconfinder.com/data/icons/core-values-1-flat-style/468/Layer3-64.png">
+                    </a>
+                </li>
+                <li class="p-3 m-0">
+                    <a class="fw-bold popUp d-flex align-items-center" data-target="projects">
+                        <img class="img-fluid" width="30"
+                            src="https://cdn1.iconfinder.com/data/icons/business-startup-47/64/1007-64.png"> </a>
+                </li>
+                <li class="p-3 m-0">
+                    <a class="fw-bold popUp d-flex align-items-center" data-target="timeline">
+                        <img class="img-fluid" width="30"
+                            src="https://cdn2.iconfinder.com/data/icons/social-media-interface-2/24/social_media_user_interface_memories_time_timeline-64.png">
+                    </a>
+                </li>
+                <li class="p-3 m-0">
+                    <a class="fw-bold popUp d-flex align-items-center" data-target="certifications">
+                        <img class="img-fluid" width="30"
+                            src="https://cdn1.iconfinder.com/data/icons/icons-for-a-site-1/64/advantage_certificate-64.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            window.addEventListener("resize", toggleNavbar);
+            document.addEventListener("DOMContentLoaded", toggleNavbar);
+
+            function toggleNavbar() {
+                const navbar = document.querySelector("#sidebar");
+                const bottomBar = document.querySelector(".bottom-bar");
+                const manage = document.querySelector(".manage");
+                if (window.innerWidth <= 768) {
+                    navbar.classList.add("d-none");
+                    bottomBar.classList.remove("d-none");
+                    manage.classList.remove("d-none");
+                } else {
+                    navbar.classList.remove("d-none");
+                    bottomBar.classList.add("d-none");
+                    manage.classList.add("d-none");
+                }
+            }
+        </script>
+
         <div id="mainContent" class="flex-fill col-9">
             <!-- Profile Section -->
             <div class="mb-3 p-3 d-none" id="profile">
@@ -63,7 +121,7 @@
                 <div class="d-flex flex-wrap justify-content-center align-items-end gap-5">
                     <div class="flex-column">
                         <div id="profileSkeleton"></div>
-                        <img id="image-profile" width="200" class="profile img-fluid mb-3"> <br>
+                        <img id="image-profile" height="200" width="200" class="profile img-fluid mb-3"> <br>
                         <p class="m-0 mb-1">Note: Fb Profile Image Address</p>
                         <input type="search" id="profile-imageAdress" disabled
                             class="form-control form-control-sm mb-3 w-100" placeholder="Copy image address">

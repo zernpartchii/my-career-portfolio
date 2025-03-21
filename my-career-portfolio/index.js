@@ -33,7 +33,7 @@ function formatDate(dateString) {
 }
 
 function displayProfileData(data) {
-    profile.innerHTML = `<img id="myProfile" width="300" src="${data.imageAddress}" class="img-fluid profile mb-3"></img>`;
+    profile.innerHTML = `<img id="myProfile" height="300" width="300" src="${data.imageAddress}" class="img-fluid profile mb-3"></img>`;
 
     btnResume.href = data.resumeLink ? data.resumeLink : '#';
     // Toggle visibility class

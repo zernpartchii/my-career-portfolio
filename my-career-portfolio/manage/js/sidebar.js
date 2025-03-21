@@ -15,6 +15,7 @@ edit_profile.addEventListener("click", async () => {
         aboutMe.disabled = false;
     } else {
         await insertProfileData();
+        image_profile.src = profilea_imageAdress.value
         edit_profile.textContent = " Edit Profile";
         edit_profile.classList.add("bi-pencil-square");
         edit_profile.classList.remove("bi-save");
@@ -29,12 +30,14 @@ edit_profile.addEventListener("click", async () => {
     }
 });
 
-document.querySelectorAll("ul li").forEach(function (item) {
+document.querySelectorAll("#sidebar ul li, .bottom-bar ul li a").forEach(function (item) {
     item.addEventListener("click", function (event) {
         event.preventDefault(); // Prevent the default anchor behavior
 
         // Get the target section ID
-        var targetId = item.getAttribute("data-target");
+        var targetId = item.getAttribute("data-target") || item.parentElement.getAttribute("data-target");
+
+        if (!targetId) return; // Prevent errors if there's no target
 
         // Hide all sections
         document.querySelectorAll("#mainContent > div").forEach(function (section) {
@@ -43,11 +46,16 @@ document.querySelectorAll("ul li").forEach(function (item) {
 
         // Show the selected section
         document.getElementById(targetId).classList.remove("d-none");
-        document.querySelector('ul').classList.remove('show');
+
+        // Hide sidebar menu (for mobile)
+        document.querySelector('#sidebar ul').classList.remove('show');
     });
-    document.getElementById('profile').classList.remove("d-none");
 });
 
+// Show 'Profile' by default
+document.getElementById('profile').classList.remove("d-none");
+
+// Toggle sidebar menu on mobile
 document.getElementById("manage").addEventListener("click", () => {
-    document.querySelector('ul').classList.toggle('show');
+    document.querySelector('#sidebar ul').classList.toggle('show');
 });
