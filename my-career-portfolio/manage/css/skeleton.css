@@ -1,22 +1,19 @@
 @keyframes skeleton-loading {
     0% {
-        background-color: #333;
-    }
-
-    50% {
-        background-color: #3d3d3d;
+        background-position: -200% 0;
     }
 
     100% {
-        background-color: #333;
+        background-position: 200% 0;
     }
 }
 
 /* Skeleton for loading for Profile */
 .skeleton-profile {
-    background: #2C2C2C;
-    animation: skeleton-profile-loading 1.5s infinite linear;
-    border-radius: 5px;
+    background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite linear;
+    border-radius: 4px;
 }
 
 .skeleton-profile-text {
@@ -76,21 +73,22 @@
     padding: 8px;
     background: #2C2C2C;
     border-radius: 8px;
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+    background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+    background-size: 200% 100%;
 }
 
 .skeleton-img {
     width: 30px;
     height: 30px;
-    background: #444;
     border-radius: 50%;
-    animation: skeleton-loading 1.5s infinite ease-in-out;
+    background: #2C2C2C;
 }
 
 .skeleton-text {
     width: 120px;
     height: 10px;
-    background: #444;
-    animation: skeleton-loading 1.5s infinite ease-in-out;
+    background: #2C2C2C;
 }
 
 
@@ -141,10 +139,10 @@
 
 /* Skeleton loading for Certificates */
 .skeleton-certificate {
-    background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+    background: linear-gradient(90deg, #333 25%, #222 50%, #333 75%);
     background-size: 200% 100%;
     animation: skeleton-loading 1.5s infinite linear;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 .skeleton-certificate-text {
@@ -170,7 +168,8 @@
 
 .skeleton-certificate-image {
     height: 200px;
-    width: 300px;
+    /* width: 300px; */
+    min-width: 100px;
     border-radius: 5px;
 }
 

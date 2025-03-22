@@ -1,6 +1,7 @@
 
 // Profile Elements
-const username = localStorage.getItem('username');
+let username = localStorage.getItem('username');
+const loader = document.getElementById('loader');
 const profilePassword = document.getElementById('profilePassword');
 const btnShowHidePassword = document.getElementById('btnShowHidePassword');
 const profileSkeleton = document.getElementById('profileSkeleton');

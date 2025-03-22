@@ -52,7 +52,7 @@
             MANAGE PORTFOLIO
         </h4>
 
-        <div class="bottom-bar fixed-bottom bg-dark d-flex align-items-center py-2">
+        <div class="bottom-bar fixed-bottom bg-dark d-flex align-items-center py-2 d-none">
             <ul class="d-flex justify-content-around flex-fill list-unstyled m-0">
                 <li class="p-3 m-0">
                     <a class="fw-bold popUp d-flex align-items-center" data-target="profile">
@@ -111,7 +111,35 @@
             <div class="mb-3 p-3 d-none" id="profile">
                 <div class="d-flex justify-content-between flex-wrap align-items-center gap-3 mb-5">
                     <h2 class="title m-0">Profile</h2>
-                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
+                        <div id="loader" class="d-none">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="loader"></div>
+                                <p class="m-0">Please wait...</p>
+                            </div>
+                            <style>
+                                .loader {
+                                    width: 20px;
+                                    height: 20px;
+                                    border: 5px solid #f3f3f3;
+                                    /* Light gray */
+                                    border-top: 5px solid #C74851;
+                                    /* Dark pinkish-red */
+                                    border-radius: 50%;
+                                    animation: spin 1s linear infinite;
+                                }
+
+                                @keyframes spin {
+                                    0% {
+                                        transform: rotate(0deg);
+                                    }
+
+                                    100% {
+                                        transform: rotate(360deg);
+                                    }
+                                }
+                            </style>
+                        </div>
                         <a id="btnViewPorfolio" class="btn btn-primary" target="_blank">View Portfolio</a>
                         <button id="btnLogout" class="btn btn-danger">Logout</button>
                         <button id="btnDeleteAccount" class="btn btn-outline-danger text-white">Delete
@@ -208,7 +236,8 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button id="btnDeleteContact"
-                                                class="btn btn-danger me-auto d-none bi bi-trash"> Delete</button>
+                                                class="btn btn-danger me-auto d-none bi bi-trash">
+                                                Delete</button>
                                             <button id="btnCloseContact" type="button" class="btn btn-danger"
                                                 data-bs-dismiss="modal">Close</button>
                                             <button id="btnAddContact" type="button" class="btn btn-primary">Add

@@ -46,11 +46,12 @@ function displayProfileData(data) {
 }
 
 async function settings() {
-    const q = query(collection(db, 'Settings'), where("__name__", "==", username || ''));
+    const q = query(collection(db, 'Settings'), where("__name__", "==", username));
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
         querySnapshot.forEach((doc) => {
             const data = doc.data();
+
             // Check if elements exist before modifying classListconst data = doc.data();
             const elements = {
                 switchTech: "myTechStack",
@@ -59,9 +60,34 @@ async function settings() {
                 switchOthers: "myOthers"
             };
 
+            let allFalse = 0;
             for (const key in elements) {
                 const el = document.getElementById(elements[key]);
                 if (el) el.classList.toggle("d-none", !data[key]);
+
+                if (data[key]) allFalse++;
+            }
+
+            // This code rune only if all skills are hidden
+            if (allFalse === 0) {
+                for (const key in elements) {
+                    const content = document.getElementById(elements[key]);
+                    content.classList.toggle('d-none', false)
+                }
+                containers.forEach((container) => {
+                    const content = document.getElementById(container.id);
+                    if (content) {
+                        content.innerHTML = "";
+                        for (let i = 0; i < 3; i++) { // Show 5 skeleton loaders as placeholders
+                            const skeletonTemplate = `
+                        <div class="skeleton-card">
+                            <div class="skeleton-img"></div>
+                            <div class="skeleton-text"></div>
+                        </div> `;
+                            content.innerHTML += skeletonTemplate;
+                        }
+                    }
+                })
             }
         });
     }

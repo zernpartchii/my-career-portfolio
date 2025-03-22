@@ -54,6 +54,7 @@ nav {
     background-color: var(--primary-color);
 }
 
+
 .btn:hover {
     border: var(--primary-color) solid 1px;
     color: var(--primary-color);
