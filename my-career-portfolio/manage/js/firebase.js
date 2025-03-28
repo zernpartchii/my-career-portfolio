@@ -283,10 +283,12 @@ export async function readProjectsData(container, projectType) {
                 .sort((a, b) => b.projectName.localeCompare(a.projectName)); // 🔤 Sort A-Z by name
 
             for (const data of sortedDocs) {
+                let imageUrl = "";  // Declare the variable
+                await checkImageExpiration(data.projectImageAddress) ? imageUrl = data.projectImageAddress : imageUrl = "../../img/unknown.png";
                 container.innerHTML += `
                 <div class="card p-3 bg-dark text-white flex-fill col-4" id="projectContainer-${data.docID}">
                     <div class="d-flex justify-content-start">
-                        <img class="img-fluid" width="200" src="${data.projectImageAddress || defaultImageAddress}" alt="${data.projectName}" />
+                        <img class="img-fluid" width="200" src="${imageUrl}" alt="${data.projectName}" />
                     </div>
                     <h5 class="my-3 text-start">${data.projectName}</h5>
                     <div class="d-flex align-items-center gap-2 flex-wrap">
@@ -575,11 +577,13 @@ export async function readCertificateData(container, username) {
             .sort((a, b) => new Date(b.certificateDate) - new Date(a.certificateDate)); // Sort by date (desc)
 
         // Generate the sorted HTML
-        sortedDocs.forEach((data) => {
+        sortedDocs.forEach(async (data) => {
+            let imageUrl = "";  // Declare the variable
+            await checkImageExpiration(data.certificateImageAddress) ? imageUrl = data.certificateImageAddress : imageUrl = "../../img/unknown.png";
             container.innerHTML += `
             <div class="card bg-dark" id="certificate-${data.certificateName}">
                 <div class="card-body text-white">
-                    <img class="img-fluid" width="270" src="${data.certificateImageAddress}" alt="${data.certificateName}">
+                    <img class="img-fluid" width="270" src="${imageUrl}" alt="${data.certificateName}">
                     <div class="text-start my-3">
                         <h5 class="cert-title">${data.certificateName}</h5>
                         <div class="">
@@ -730,6 +734,21 @@ function showData(data, docID) {
     techName.value = data.techName;
     textImage.value = data.textImage || defaultImageAddress;
     techAction.classList.remove('d-none');
+}
+
+function checkImageExpiration(url) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = function () {
+            // Image exists and is accessible (status 200)
+            resolve(true); // Image is valid (not expired)
+        };
+        img.onerror = function () {
+            // Image is either not found or server error (status 404 or 410)
+            resolve(false); // Image is expired or unavailable
+        };
+        img.src = url; // Set the image source to trigger the request
+    });
 }
 
 export {

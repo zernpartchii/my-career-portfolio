@@ -101,12 +101,10 @@ async function updateUserDataByUsername(tableName, oldUsername) {
 
 function displayProfileData(data) {
     if (!data.imageAddress) {
-        profileSkeleton.innerHTML = `<div class="skeleton-profile skeleton-profile-image mb-3"></div>`;
         image_profile.classList.add('d-none');
     } else {
         image_profile.classList.remove('d-none');
         image_profile.src = data.imageAddress
-        profileSkeleton.innerHTML = '';
     }
 
     localStorage.setItem('profileID', data.profileID);

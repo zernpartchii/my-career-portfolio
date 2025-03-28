@@ -159,10 +159,13 @@ async function displayProjectData() {
                 let disabledMsg1 = data.btnVisitDisabled === false ? '' : 'The owner has temporarily disabled visiting.';
                 let disabledMsg2 = data.btnSourceDisabled === false ? '' : 'The owner has temporarily disabled access to the source code.';
 
+                let imageUrl = "";  // Declare the variable
+                await checkImageExpiration(data.projectImageAddress) ? imageUrl = data.projectImageAddress : imageUrl = "./img/unknown.png";
+
                 const container = `
                 <div class="my-5">
                     <div class="d-flex justify-content-center flex-wrap gap-3">
-                        <img width="700" src="${data.projectImageAddress}" alt="${data.projectName}" class="project img-fluid popUp">
+                        <img width="700" src="${imageUrl}" alt="${data.projectName}" class="project img-fluid popUp">
                         <div class="d-flex justify-content-center flex-column gap-3">
                             <a style="max-width: 30rem;" href="${linkVisit}" 
                             target="_blank" class="${disabledVisit} btn btn-Visit popUp rounded-5 w-100 p-3 fs-5 fw-bold">
@@ -375,11 +378,15 @@ async function displayCertificatesData() {
                 .sort((a, b) => new Date(b.certificateDate) - new Date(a.certificateDate)); // Sort by date (desc)
 
             // Generate the sorted HTML
-            sortedDocs.forEach((data) => {
+            sortedDocs.forEach(async (data) => {
+
+                let imageUrl = "";  // Declare the variable
+                await checkImageExpiration(data.certificateImageAddress) ? imageUrl = data.certificateImageAddress : imageUrl = "./img/unknown.png";
+
                 certificateContainer.innerHTML += `
             <div class="card bg-dark popUp" id="certificate-${data.certificateName}">
                 <div class="card-body text-white">
-                    <img width="350" class="img-fluid" src="${data.certificateImageAddress}" alt="${data.certificateName}">
+                    <img width="350" class="img-fluid" src="${imageUrl}" alt="${data.certificateName}">
                     <div class="text-start my-3">
                         <h5>${data.certificateName}</h5>
                         <div class="">
@@ -476,6 +483,21 @@ async function displayContactData() {
     } catch (error) {
         console.error("Error fetching document:", error);
     }
+}
+
+function checkImageExpiration(url) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = function () {
+            // Image exists and is accessible (status 200)
+            resolve(true); // Image is valid (not expired)
+        };
+        img.onerror = function () {
+            // Image is either not found or server error (status 404 or 410)
+            resolve(false); // Image is expired or unavailable
+        };
+        img.src = url; // Set the image source to trigger the request
+    });
 }
 
 // Display Data

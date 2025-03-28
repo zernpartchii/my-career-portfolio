@@ -1,10 +1,16 @@
 
-// Profile Elements
+//Global Elements
 let username = localStorage.getItem('username');
+let techImageGallaryLink = 'http://tech-image-gallary.22web.org/?username=' + username;
+
+document.getElementById('getProfileImage').href = techImageGallaryLink + '&type=profile';
+document.getElementById('getProjectImage').href = techImageGallaryLink + '&type=projects';
+document.getElementById('getCertificateImage').href = techImageGallaryLink + '&type=certificates';
+
+// Profile Elements
 const loader = document.getElementById('loader');
 const profilePassword = document.getElementById('profilePassword');
 const btnShowHidePassword = document.getElementById('btnShowHidePassword');
-const profileSkeleton = document.getElementById('profileSkeleton');
 const btnSaveUsername = document.getElementById('btnSaveUsername');
 const btnViewPorfolio = document.getElementById('btnViewPorfolio');
 const image_profile = document.getElementById('image-profile');
